@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -149,8 +148,7 @@
     }
 
     .animate-note-slide {
-18:27
-animation: noteFadeSlide 0.36s ease-out forwards;
+      animation: noteFadeSlide 0.36s ease-out forwards;
     }
 
     .animate-letter-unfold {
@@ -234,8 +232,7 @@ animation: noteFadeSlide 0.36s ease-out forwards;
         </p>
 
         <h1 class="font-serif text-3xl sm:text-5xl font-semibold text-charcoal leading-tight">
-18:27
-Я очень сильно тебя люблю <span class="text-dustyRoseDark italic font-normal">и безумно скучаю</span>
+          Я очень сильно тебя люблю <span class="text-dustyRoseDark italic font-normal">и безумно скучаю</span>
         </h1>
 
         <p class="text-sm sm:text-base text-muted leading-relaxed">
@@ -301,8 +298,7 @@ animation: noteFadeSlide 0.36s ease-out forwards;
 
         <div class="rounded-2xl bg-cream border border-blush p-4 sm:p-6 text-center">
           <div id="unit-minutes" class="text-3xl sm:text-5xl font-bold text-charcoal tabular-nums">00</div>
-18:27
-<div id="label-minutes" class="text-xs sm:text-sm font-medium text-muted mt-1.5">минут</div>
+          <div id="label-minutes" class="text-xs sm:text-sm font-medium text-muted mt-1.5">минут</div>
         </div>
 
         <div class="rounded-2xl bg-cream border border-blush p-4 sm:p-6 text-center">
@@ -377,8 +373,7 @@ animation: noteFadeSlide 0.36s ease-out forwards;
             <div class="w-24 h-5 mx-auto rounded-t-xl bg-dustyRose/85 border border-dustyRoseDark/30 shadow-xs"></div>
             <div class="w-28 h-2.5 mx-auto rounded-full bg-blush border border-dustyRose/40 -mt-0.5"></div>
             <!-- Стеклянный корпус банки скучаний -->
-18:27
-<div class="relative w-36 h-44 mx-auto rounded-3xl bg-white/75 border-2 border-dustyRose/45 shadow-inner overflow-hidden flex flex-col justify-end p-2.5">
+            <div class="relative w-36 h-44 mx-auto rounded-3xl bg-white/75 border-2 border-dustyRose/45 shadow-inner overflow-hidden flex flex-col justify-end p-2.5">
               <div class="jar-glass-shine absolute inset-0 pointer-events-none"></div>
               <!-- Маленькие сложенные записки внутри банки -->
               <div class="relative z-10 flex flex-wrap justify-center gap-1.5 pb-1">
@@ -444,14 +439,906 @@ animation: noteFadeSlide 0.36s ease-out forwards;
               >
                 Следующая →
               </button>
-18:27
-
-
-</div>
+            </div>
           </div>
 
           <!-- Форма добавления новой записки в Банку скучаний -->
-          <form id="add-miss-note-form" class="roun
-</script>
+          <form id="add-miss-note-form" class="rounded-2xl bg-cream/80 border border-blush p-4 sm:p-5 space-y-3.5">
+            <h3 class="text-sm font-semibold text-charcoal">Добавить новую записку в банку скучаний</h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="miss-date-input" class="block text-xs font-medium text-muted mb-1">Дата</label>
+                <input
+                  id="miss-date-input"
+                  type="date"
+                  required
+                  class="w-full rounded-xl bg-creamCard border border-blush focus:border-dustyRose focus:outline-none px-3 py-2 text-sm text-charcoal"
+                />
+              </div>
+              <div>
+                <label for="miss-time-input" class="block text-xs font-medium text-muted mb-1">Время</label>
+                <input
+                  id="miss-time-input"
+                  type="time"
+                  required
+                  class="w-full rounded-xl bg-creamCard border border-blush focus:border-dustyRose focus:outline-none px-3 py-2 text-sm text-charcoal"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="miss-text-input" class="block text-xs font-medium text-muted mb-1">О чём ты думал и как скучал</label>
+              <textarea
+                id="miss-text-input"
+                rows="2"
+                required
+                placeholder="Например: Увидел твой любимый кофе и сразу захотелось обнять тебя..."
+                class="w-full rounded-xl bg-creamCard border border-blush focus:border-dustyRose focus:outline-none px-3.5 py-2.5 text-sm text-charcoal resize-y"
+              ></textarea>
+            </div>
+
+            <div class="flex justify-end">
+              <button
+                type="submit"
+                class="px-5 py-2.5 rounded-xl bg-charcoal hover:bg-plumSoft text-cream text-xs sm:text-sm font-medium transition-colors cursor-pointer active:scale-95"
+              >
+                Положить в банку
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Список всех записок скучаний для быстрого просмотра -->
+      <div class="pt-2 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-semibold text-charcoal">Все записки в банке скучаний</h3>
+          <span class="text-xs text-muted">Нажми на любую, чтобы достать её</span>
+        </div>
+        <div id="miss-notes-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+      </div>
+    </section>
+
+    <!-- 3. «Банка причин, почему я тебя люблю» с анимацией доставания -->
+    <section id="love-jar-section" class="rounded-3xl bg-creamCard border border-blush shadow-card p-6 sm:p-8 space-y-7">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-blush/70 pb-5">
+        <div>
+          <span class="text-xs uppercase tracking-wider font-semibold text-dustyRoseDark">Тёплые признания</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-charcoal mt-1">
+            Банка причин, почему я тебя люблю
+          </h2>
+          <p class="text-xs sm:text-sm text-muted mt-1">
+            Маленькие и большие поводы, за которые я обожаю тебя каждый день.
+          </p>
+        </div>
+
+        <span id="love-reasons-badge" class="self-start sm:self-auto px-3.5 py-1.5 rounded-full bg-blush/70 text-charcoal text-xs font-semibold">
+          0 причин
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+        <!-- Визуальная банка причин любви -->
+        <div class="lg:col-span-5 rounded-2xl bg-cream border border-blush p-6 flex flex-col items-center text-center space-y-5">
+          <div id="love-jar-visual" class="animate-jar-float select-none" aria-hidden="true">
+            <!-- Ленточка/крышка -->
+            <div class="w-24 h-5 mx-auto rounded-t-xl bg-dustyRoseDark/80 border border-dustyRoseDark/40 shadow-xs"></div>
+            <div class="w-28 h-2.5 mx-auto rounded-full bg-dustyRose/45 border border-dustyRose/50 -mt-0.5"></div>
+            <!-- Стеклянный корпус банки любви -->
+            <div class="relative w-36 h-44 mx-auto rounded-3xl bg-white/75 border-2 border-dustyRose/45 shadow-inner overflow-hidden flex flex-col justify-end p-2.5">
+              <div class="jar-glass-shine absolute inset-0 pointer-events-none"></div>
+              <div class="relative z-10 flex flex-wrap justify-center gap-1.5 pb-1">
+                <span class="w-8 h-4 rounded-xs bg-[#FDE2E4] border border-rose-200 rotate-6 inline-block"></span>
+                <span class="w-7 h-4 rounded-xs bg-[#FAD2E1] border border-pink-200 -rotate-12 inline-block"></span>
+                <span class="w-8 h-4 rounded-xs bg-[#FFF1E6] border border-orange-200 rotate-3 inline-block"></span>
+                <span class="w-7 h-4 rounded-xs bg-[#FDE2E4] border border-rose-200 -rotate-6 inline-block"></span>
+                <span class="w-8 h-4 rounded-xs bg-[#FAD2E1] border border-pink-200 rotate-12 inline-block"></span>
+                <span class="w-7 h-4 rounded-xs bg-[#FFF1E6] border border-orange-200 -rotate-3 inline-block"></span>
+              </div>
+              <div class="relative z-10 mt-1 text-[10px] font-semibold uppercase tracking-wider text-dustyRoseDark bg-cream/85 rounded-full py-0.5">
+                Люблю
+              </div>
+            </div>
+          </div>
+
+          <button
+            id="pull-love-reason-btn"
+            type="button"
+            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-dustyRose hover:bg-dustyRoseDark text-white font-semibold text-sm shadow-sm hover:shadow transition-all cursor-pointer active:scale-95"
+          >
+            <span>Достать причину любви</span>
+          </button>
+        </div>
+
+        <!-- Карточка вытянутой причины любви -->
+        <div class="lg:col-span-7 space-y-4">
+          <div
+            id="active-love-card"
+            class="rounded-2xl bg-cream border border-blush p-6 sm:p-7 min-h-[205px] flex flex-col justify-between shadow-xs"
+          >
+            <div class="flex items-center justify-between gap-2 pb-3 border-b border-blush/70">
+              <span id="love-reason-tag" class="text-xs font-semibold uppercase tracking-wider text-dustyRoseDark">
+                Причина №1
+              </span>
+              <span class="text-xs text-muted">Из баночки любви</span>
+            </div>
+
+            <p id="love-reason-text" class="font-serif text-lg sm:text-xl text-charcoal leading-relaxed my-5">
+              Загружаем тёплые слова...
+            </p>
+
+            <div class="flex items-center justify-between gap-2 pt-2">
+              <button
+                id="prev-love-reason-btn"
+                type="button"
+                class="px-3.5 py-2 rounded-xl bg-creamCard hover:bg-blush/50 border border-blush text-xs sm:text-sm font-medium text-charcoal transition-colors cursor-pointer active:scale-95"
+              >
+                ← Назад
+              </button>
+              <button
+                id="next-love-reason-btn"
+                type="button"
+                class="px-3.5 py-2 rounded-xl bg-creamCard hover:bg-blush/50 border border-blush text-xs sm:text-sm font-medium text-charcoal transition-colors cursor-pointer active:scale-95"
+              >
+                Следующая →
+              </button>
+            </div>
+          </div>
+
+          <!-- Небольшая форма добавления новой причины -->
+          <form id="add-love-reason-form" class="flex flex-col sm:flex-row gap-2.5">
+            <input
+              id="love-reason-input"
+              type="text"
+              required
+              placeholder="Дописать ещё одну причину, почему я тебя люблю..."
+              class="flex-1 rounded-xl bg-cream border border-blush focus:border-dustyRose focus:outline-none px-4 py-2.5 text-sm text-charcoal"
+            />
+            <button
+              type="submit"
+              class="px-5 py-2.5 rounded-xl bg-charcoal hover:bg-plumSoft text-cream text-xs sm:text-sm font-medium transition-colors cursor-pointer active:scale-95 shrink-0"
+            >
+              Добавить
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Секретная карточка / конверт «Открыть, когда грустно или далеко» -->
+    <section id="secret-letter-section" class="rounded-3xl bg-creamCard border border-blush shadow-card p-6 sm:p-8">
+      <div class="max-w-3xl mx-auto text-center space-y-5">
+        <span class="text-xs uppercase tracking-wider font-semibold text-dustyRoseDark">Личное письмо</span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-charcoal">
+          Открыть, когда грустно или далеко
+        </h2>
+        <p class="text-xs sm:text-sm text-muted">
+          Если вдруг станет тревожно, одиноко или просто захочется почувствовать меня рядом — открой этот конверт.
+        </p>
+
+        <button
+          id="toggle-letter-btn"
+          type="button"
+          aria-expanded="false"
+          class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-blush hover:bg-dustyRose hover:text-white text-charcoal font-semibold text-sm sm:text-base border border-dustyRose/40 transition-all cursor-pointer active:scale-95"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <span id="letter-btn-text">Открыть письмо</span>
+        </button>
+
+        <!-- Раскрывающееся письмо -->
+        <div
+          id="secret-letter-content"
+          class="hidden text-left rounded-2xl bg-cream border border-dustyRose/40 p-6 sm:p-8 shadow-inner space-y-4 animate-letter-unfold"
+        >
+          <p class="font-serif italic text-lg text-dustyRoseDark">Моя любимая,</p>
+          <p class="text-sm sm:text-base text-charcoal leading-relaxed">
+            Если ты сейчас открыла это письмо, значит, тебе нужно немного тепла. Знай: даже когда между нами расстояние или занятые дни, я всегда ношу тебя в сердце. Мне так ценно всё, что мы строим вместе, и каждый раз, когда я думаю о тебе, становится светлее.
+          </p>
+          <p class="text-sm sm:text-base text-charcoal leading-relaxed">
+            Я обещаю беречь тебя, поддерживать и окружать заботой так, чтобы у тебя никогда не оставалось ни тени сомнений в том, как сильно ты мне дорога. А при встрече я обязательно крепко тебя обниму — ровно столько раз, сколько ты накликала на кнопке обнимашек, и даже больше.
+          </p>
+          <p class="font-serif italic text-sm sm:text-base text-plumSoft pt-2">
+            Навсегда твой — с бесконечной любовью и скучаниями.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал с пасхалкой по 5 кликам на сердечко -->
+  <footer class="border-t border-blush/80 bg-creamCard/70 py-8 px-4 text-center">
+    <div class="max-w-3xl mx-auto space-y-3">
+      <div class="inline-flex items-center justify-center gap-2 text-xs sm:text-sm text-muted">
+        <span>Сделано с любовью</span>
+        <button
+          id="easter-egg-heart-btn"
+          type="button"
+          title="Нажми несколько раз..."
+          aria-label="Секретное сердечко"
+          class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-blush/70 hover:bg-blush text-dustyRoseDark transition-transform cursor-pointer active:scale-90"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </button>
+        <span id="easter-egg-hint" class="text-xs text-muted/80">(подсказка: попробуй нажать на сердечко 5 раз)</span>
+      </div>
+
+      <!-- Скрытое послание пасхалки -->
+      <div
+        id="easter-egg-reveal"
+        class="hidden max-w-xl mx-auto rounded-2xl bg-blush/55 border border-dustyRose/45 px-5 py-4 text-xs sm:text-sm text-charcoal animate-note-slide"
+      >
+        <p class="font-semibold text-dustyRoseDark mb-1">Секретная записка найдена ✨</p>
+        <p class="leading-relaxed">
+          Наш отсчёт начался <strong>30 сентября 2026 года в 23:02</strong>, и с той самой минуты ты стала самым важным и тёплым чудом в моей жизни. Держи двойной виртуальный кусь за носик и крепкие обнимашки!
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // Конфигурация по умолчанию
+      const DEFAULT_START_ISO = '2026-09-30T23:02:00';
+
+      const STORAGE_KEYS = {
+        startDate: 'loveSite_startDate_v3',
+        missNotes: 'loveSite_missNotes_v3',
+        loveReasons: 'loveSite_loveReasons_v3',
+        hugsCount: 'loveSite_hugsCount_v3'
+      };
+
+      // Начальные записи для «Банки скучаний» (включая осень/ноябрь 2026)
+      const DEFAULT_MISS_NOTES = [
+        {
+          id: 'miss-1',
+          date: '2026-10-05',
+          time: '22:18',
+          text: 'Прошла всего пара дней после нашего начала, а я уже поймал себя на том, что скучаю по твоему голосу и снова перечитываю наши сообщения.'
+        },
+        {
+          id: 'miss-2',
+          date: '2026-10-19',
+          time: '19:40',
+          text: 'Вечером шёл по улице и вдруг остро захотелось взять тебя за тёплую руку и просто идти рядом, никуда не спеша.'
+        },
+        {
+          id: 'miss-3',
+          date: '2026-11-03',
+          time: '23:15',
+          text: 'Ноябрьский вечер за окном холодный, а я лежу и думаю о тебе — так сильно скучаю, что хочется телепортироваться к тебе в обнимашки.'
+        },
+        {
+          id: 'miss-4',
+          date: '2026-11-16',
+          time: '14:25',
+          text: 'Увидел что-то вкусненькое и сразу подумал о тебе: как же хочется порадовать тебя и увидеть твои озарные счастливые глазки.'
+        },
+        {
+          id: 'miss-5',
+          date: '2026-11-26',
+          time: '17:50',
+          text: 'Снова думаю о тебе и скучаю до мурашек. Жду каждой нашей встречи так, будто впереди самый главный праздник.'
+        }
+      ];
+
+      // Пять бережно отредактированных записок для «Банки причин, почему я тебя люблю»
+      const DEFAULT_LOVE_REASONS = [
+        'Люблю тебя за твою открытость и честность — ты никогда не прячешь свои эмоции, и за эту искренность тебя всегда хочется крепко затискать так, чтобы ты начала тихонько мурчать.',
+        'Ты по-настоящему восхитительна и прекрасней любой другой девушки. Я говорю это вслух не так часто, как стоило бы, но правда — ты основательно покорила моё сердце.',
+        'Обожаю твои озарные, довольные глазки и милую мордашку, которая так искренне и по-детски радуется, когда ей купили покушать.',
+        'Люблю твои нежные ручки — они невероятно приятные, и в моменты, когда ты меня тискаешь, я без сопротивления превращаюсь в ручного котёнка.',
+        'Спасибо тебе за твою заботу — я очень ценю и нежно люблю её в тебе и сам буду заботиться о тебе так, чтобы ты ни на секунду не усомнилась в моей любви.'
+      ];
+
+      // Состояние приложения
+      let startDateObj = new Date(DEFAULT_START_ISO);
+      let missNotes = [];
+      let loveReasons = [];
+      let currentMissIndex = 0;
+      let currentLoveIndex = 0;
+      let hugsCount = 0;
+      let easterEggClicks = 0;
+
+      // Состояние мягкого эмбиента (Web Audio API)
+      let audioCtx = null;
+      let ambientInterval = null;
+      let isAmbientPlaying = false;
+
+      // Безопасная работа с localStorage
+      function readStorage(key, fallback) {
+        try {
+          const raw = localStorage.getItem(key);
+          return raw !== null ? JSON.parse(raw) : fallback;
+        } catch (err) {
+          return fallback;
+        }
+      }
+
+      function writeStorage(key, value) {
+        try {
+          localStorage.setItem(key, JSON.stringify(value));
+        } catch (err) {
+          // Игнорируем ошибки квоты или приватного режима
+        }
+      }
+
+      // Всплывающее уведомление вместо alert()
+      let toastTimeout = null;
+      function showToast(message) {
+        const toastEl = document.getElementById('toast-box');
+        if (!toastEl) return;
+        toastEl.textContent = message;
+        toastEl.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
+        toastEl.classList.add('opacity-100', 'translate-y-0');
+
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toastEl.classList.remove('opacity-100', 'translate-y-0');
+          toastEl.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+        }, 2800);
+      }
+
+      // Склонение русских слов
+      function pluralize(n, one, few, many) {
+        const abs = Math.abs(n) % 100;
+        const last = abs % 10;
+        if (abs > 10 && abs < 20) return many;
+        if (last > 1 && last < 5) return few;
+        if (last === 1) return one;
+        return many;
+      }
+
+      function pad2(n) {
+        return String(Math.max(0, Math.floor(n))).padStart(2, '0');
+      }
+
+      // Форматирование даты и времени для записок скучаний
+      function formatDateTimeRu(dateStr, timeStr) {
+        const months = [
+          'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+          'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+        ];
+        const parts = (dateStr || '').split('-');
+        if (parts.length === 3) {
+          const year = parts[0];
+          const monthIdx = parseInt(parts[1], 10) - 1;
+          const day = parseInt(parts[2], 10);
+          const monthName = months[monthIdx] || parts[1];
+          const timePart = timeStr ? ` в ${timeStr}` : '';
+          return `${day} ${monthName} ${year}${timePart}`;
+        }
+        return `${dateStr || ''} ${timeStr || ''}`.trim();
+      }
+
+      // Форматирование даты для подписи счётчика
+      function formatFullStartRu(dateObj) {
+        const months = [
+          'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+          'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+        ];
+        const day = dateObj.getDate();
+        const month = months[dateObj.getMonth()];
+        const year = dateObj.getFullYear();
+        const hours = pad2(dateObj.getHours());
+        const mins = pad2(dateObj.getMinutes());
+        return `${day} ${month} ${year} года, ${hours}:${mins}`;
+      }
+
+      // Преобразование Date в формат для input[type="datetime-local"]
+      function toDatetimeLocalValue(dateObj) {
+        const y = dateObj.getFullYear();
+        const m = pad2(dateObj.getMonth() + 1);
+        const d = pad2(dateObj.getDate());
+        const h = pad2(dateObj.getHours());
+        const min = pad2(dateObj.getMinutes());
+        const s = pad2(dateObj.getSeconds());
+        return `${y}-${m}-${d}T${h}:${min}:${s}`;
+      }
+
+      // Обновление живого счётчика времени «Мы вместе уже…»
+      function updateCounter() {
+        const now = new Date();
+        const diffMs = startDateObj.getTime() - now.getTime();
+        const futureNotice = document.getElementById('future-date-note');
+
+        let totalSeconds;
+        if (diffMs > 0) {
+          totalSeconds = Math.floor(diffMs / 1000);
+          if (futureNotice) futureNotice.classList.remove('hidden');
+        } else {
+          totalSeconds = Math.floor(Math.abs(diffMs) / 1000);
+          if (futureNotice) futureNotice.classList.add('hidden');
+        }
+
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        document.getElementById('unit-days').textContent = String(days);
+        document.getElementById('unit-hours').textContent = pad2(hours);
+        document.getElementById('unit-minutes').textContent = pad2(minutes);
+        document.getElementById('unit-seconds').textContent = pad2(seconds);
+
+        document.getElementById('label-days').textContent = pluralize(days, 'день', 'дня', 'дней');
+        document.getElementById('label-hours').textContent = pluralize(hours, 'час', 'часа', 'часов');
+        document.getElementById('label-minutes').textContent = pluralize(minutes, 'минута', 'минуты', 'минут');
+        document.getElementById('label-seconds').textContent = pluralize(seconds, 'секунда', 'секунды', 'секунд');
+
+        document.getElementById('start-date-caption').textContent = `Отсчёт от ${formatFullStartRu(startDateObj)}`;
+      }
+
+      // Запуск анимации вытягивания записки и встряхивания банки
+      function animateJarPull(jarEl, cardEl, mode) {
+        if (jarEl) {
+          jarEl.classList.remove('animate-jar-shake');
+          void jarEl.offsetWidth;
+          jarEl.classList.add('animate-jar-shake');
+        }
+        if (cardEl) {
+          cardEl.classList.remove('animate-note-pull', 'animate-note-slide');
+          void cardEl.offsetWidth;
+          cardEl.classList.add(mode === 'pull' ? 'animate-note-pull' : 'animate-note-slide');
+        }
+      }
+
+      // Отрисовка «Банки скучаний»
+      function renderMissJar(animMode = 'slide') {
+        const badgeEl = document.getElementById('miss-notes-badge');
+        const dtEl = document.getElementById('miss-note-datetime').lastElementChild;
+        const idxEl = document.getElementById('miss-note-index');
+        const textEl = document.getElementById('miss-note-text');
+        const listEl = document.getElementById('miss-notes-list');
+        const jarEl = document.getElementById('miss-jar-visual');
+        const cardEl = document.getElementById('active-miss-card');
+
+        badgeEl.textContent = `${missNotes.length} ${pluralize(missNotes.length, 'записка', 'записки', 'записок')}`;
+
+        if (!missNotes.length) {
+          currentMissIndex = 0;
+          dtEl.textContent = 'Пока пусто';
+          idxEl.textContent = '0 из 0';
+          textEl.textContent = 'В банке скучаний пока нет записок. Добавь первую ниже.';
+          listEl.innerHTML = '<p class="text-xs text-muted col-span-full">Записок пока нет.</p>';
+          return;
+        }
+
+        if (currentMissIndex < 0) currentMissIndex = missNotes.length - 1;
+        if (currentMissIndex >= missNotes.length) currentMissIndex = 0;
+
+        const current = missNotes[currentMissIndex];
+        dtEl.textContent = formatDateTimeRu(current.date, current.time);
+        idxEl.textContent = `Записка ${currentMissIndex + 1} из ${missNotes.length}`;
+        textEl.textContent = `«${current.text}»`;
+
+        if (animMode) {
+          animateJarPull(jarEl, cardEl, animMode);
+        }
+
+        // Отрисовка карточек всех записок
+        listEl.innerHTML = '';
+        missNotes.forEach((item, index) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          const isActive = index === currentMissIndex;
+          btn.className = [
+            'text-left rounded-2xl p-4 border transition-all cursor-pointer flex flex-col justify-between gap-2',
+            isActive
+              ? 'bg-blush/55 border-dustyRose shadow-xs'
+              : 'bg-cream hover:bg-blush/30 border-blush'
+          ].join(' ');
+
+          const meta = document.createElement('div');
+          meta.className = 'text-[11px] font-semibold text-dustyRoseDark';
+          meta.textContent = formatDateTimeRu(item.date, item.time);
+
+          const snippet = document.createElement('p');
+          snippet.className = 'text-xs text-charcoal line-clamp-2 leading-relaxed';
+          snippet.textContent = item.text;
+
+          btn.appendChild(meta);
+          btn.appendChild(snippet);
+
+          btn.addEventListener('click', () => {
+            currentMissIndex = index;
+            renderMissJar('pull');
+            cardEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          });
+
+          listEl.appendChild(btn);
+        });
+      }
+
+      // Отрисовка «Банки причин, почему я тебя люблю»
+      function renderLoveJar(animMode = 'slide') {
+        const badgeEl = document.getElementById('love-reasons-badge');
+        const tagEl = document.getElementById('love-reason-tag');
+        const textEl = document.getElementById('love-reason-text');
+        const jarEl = document.getElementById('love-jar-visual');
+        const cardEl = document.getElementById('active-love-card');
+
+        badgeEl.textContent = `${loveReasons.length} ${pluralize(loveReasons.length, 'причина', 'причины', 'причин')}`;
+
+        if (!loveReasons.length) {
+          currentLoveIndex = 0;
+          tagEl.textContent = 'Банка пуста';
+          textEl.textContent = 'Допиши первую причину, почему ты её любишь.';
+          return;
+        }
+
+        if (currentLoveIndex < 0) currentLoveIndex = loveReasons.length - 1;
+        if (currentLoveIndex >= loveReasons.length) currentLoveIndex = 0;
+
+        tagEl.textContent = `Причина №${currentLoveIndex + 1} из ${loveReasons.length}`;
+        textEl.textContent = `«${loveReasons[currentLoveIndex]}»`;
+
+        if (animMode) {
+          animateJarPull(jarEl, cardEl, animMode);
+        }
+      }
+
+      // Летающие сердечки и обнимашки
+      function spawnFloatingHearts(count = 7) {
+        const layer = document.getElementById('hearts-layer');
+        if (!layer) return;
+
+        const glyphs = ['💗', '💖', '💕', '🧸', '🌸'];
+        for (let i = 0; i < count; i++) {
+          const el = document.createElement('span');
+          el.className = 'floating-heart';
+          el.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+
+          const leftPercent = 8 + Math.random() * 84;
+          const driftX = (Math.random() * 80 - 40).toFixed(0) + 'px';
+          const duration = (2.6 + Math.random() * 1.6).toFixed(2) + 's';
+          const fontSize = (18 + Math.random() * 14).toFixed(0) + 'px';
+
+          el.style.left = leftPercent + 'vw';
+          el.style.fontSize = fontSize;
+          el.style.setProperty('--drift-x', driftX);
+          el.style.setProperty('--dur', duration);
+          el.style.animationDelay = (i * 0.08).toFixed(2) + 's';
+
+          layer.appendChild(el);
+
+          setTimeout(() => {
+            el.remove();
+          }, 4600);
+        }
+      }
+
+      function updateHugsUI() {
+        const counterEl = document.getElementById('hugs-counter');
+        if (counterEl) {
+          counterEl.textContent = String(hugsCount);
+        }
+      }
+
+      // Мягкий фоновый эмбиент на Web Audio API
+      function playSoftChord() {
+        if (!audioCtx || !isAmbientPlaying) return;
+        try {
+          // Тёплый мажорный аккорд (Fmaj7 / Cmaj7 мягкие частоты)
+          const chords = [
+            [261.63, 329.63, 392.00, 493.88], // Cmaj7
+            [220.00, 261.63, 329.63, 392.00], // Am7
+            [174.61, 220.00, 261.63, 349.23], // Fmaj7
+            [196.00, 246.94, 293.66, 392.00]  // G6
+          ];
+          const chordIndex = Math.floor(Date.now() / 3600) % chords.length;
+          const notes = chords[chordIndex];
+          const now = audioCtx.currentTime;
+
+          notes.forEach((freq, idx) => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            const filter = audioCtx.createBiquadFilter();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(750, now);
+
+            gain.gain.setValueAtTime(0.0001, now + idx * 0.08);
+            gain.gain.exponentialRampToValueAtTime(0.022, now + idx * 0.08 + 0.9);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.08 + 3.4);
+
+            osc.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now + idx * 0.08);
+            osc.stop(now + idx * 0.08 + 3.5);
+          });
+        } catch (err) {
+          // Игнорируем ошибки аудио-контекста
+        }
+      }
+
+      function toggleAmbient() {
+        const btn = document.getElementById('ambient-toggle-btn');
+        const dot = document.getElementById('ambient-dot');
+        const label = document.getElementById('ambient-label');
+
+        if (!isAmbientPlaying) {
+          try {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!audioCtx) {
+              audioCtx = new AudioContextClass();
+            }
+            if (audioCtx.state === 'suspended') {
+              audioCtx.resume();
+            }
+            isAmbientPlaying = true;
+            playSoftChord();
+            ambientInterval = setInterval(playSoftChord, 3600);
+
+            btn.setAttribute('aria-pressed', 'true');
+            dot.classList.remove('bg-muted/50');
+            dot.classList.add('bg-dustyRoseDark');
+            label.textContent = 'Мелодия играет';
+            showToast('Включил мягкую мелодию ✨');
+          } catch (err) {
+            showToast('Не удалось запустить звук в этом браузере');
+          }
+        } else {
+          isAmbientPlaying = false;
+          if (ambientInterval) {
+            clearInterval(ambientInterval);
+            ambientInterval = null;
+          }
+          btn.setAttribute('aria-pressed', 'false');
+          dot.classList.remove('bg-dustyRoseDark');
+          dot.classList.add('bg-muted/50');
+          label.textContent = 'Включить мелодию';
+          showToast('Мелодия приостановлена');
+        }
+      }
+
+      // Настройка обработчиков событий
+      function bindEvents() {
+        // Кнопка «Я сейчас скучаю · Прислать обнимашки»
+        document.getElementById('hug-button').addEventListener('click', () => {
+          hugsCount += 1;
+          writeStorage(STORAGE_KEYS.hugsCount, hugsCount);
+          updateHugsUI();
+          spawnFloatingHearts(8);
+          showToast('Обнимашки отправлены! Я рядом в мыслях 💗');
+        });
+
+        // Панель смены даты и времени начала отношений
+        const datePanel = document.getElementById('date-editor-panel');
+        const dateInput = document.getElementById('start-datetime-input');
+
+        document.getElementById('toggle-date-panel-btn').addEventListener('click', () => {
+          dateInput.value = toDatetimeLocalValue(startDateObj);
+          datePanel.classList.toggle('hidden');
+        });
+
+        document.getElementById('save-start-date-btn').addEventListener('click', () => {
+          if (!dateInput.value) {
+            showToast('Выбери дату и время');
+            return;
+          }
+          const parsed = new Date(dateInput.value);
+          if (Number.isNaN(parsed.getTime())) {
+            showToast('Некорректная дата');
+            return;
+          }
+          startDateObj = parsed;
+          writeStorage(STORAGE_KEYS.startDate, parsed.toISOString());
+          updateCounter();
+          datePanel.classList.add('hidden');
+          showToast('Дата начала отсчёта обновлена');
+        });
+
+        document.getElementById('reset-start-date-btn').addEventListener('click', () => {
+          startDateObj = new Date(DEFAULT_START_ISO);
+          dateInput.value = toDatetimeLocalValue(startDateObj);
+          writeStorage(STORAGE_KEYS.startDate, DEFAULT_START_ISO);
+          updateCounter();
+          showToast('Возвращена дата 30.09.2026, 23:02');
+        });
+
+        // Банка скучаний: достать случайную записку / переключение / добавление
+        document.getElementById('pull-miss-note-btn').addEventListener('click', () => {
+          if (!missNotes.length) {
+            showToast('Банка пока пуста');
+            return;
+          }
+          if (missNotes.length > 1) {
+            let next = Math.floor(Math.random() * missNotes.length);
+            if (next === currentMissIndex) {
+              next = (currentMissIndex + 1) % missNotes.length;
+            }
+            currentMissIndex = next;
+          }
+          renderMissJar('pull');
+        });
+
+        document.getElementById('prev-miss-note-btn').addEventListener('click', () => {
+          if (!missNotes.length) return;
+          currentMissIndex = (currentMissIndex - 1 + missNotes.length) % missNotes.length;
+          renderMissJar('pull');
+        });
+
+        document.getElementById('next-miss-note-btn').addEventListener('click', () => {
+          if (!missNotes.length) return;
+          currentMissIndex = (currentMissIndex + 1) % missNotes.length;
+          renderMissJar('pull');
+        });
+
+        document.getElementById('add-miss-note-form').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const dInput = document.getElementById('miss-date-input');
+          const tInput = document.getElementById('miss-time-input');
+          const txtInput = document.getElementById('miss-text-input');
+
+          const textVal = txtInput.value.trim();
+          if (!textVal || !dInput.value || !tInput.value) {
+            showToast('Заполни дату, время и текст записки');
+            return;
+          }
+
+          const newNote = {
+            id: 'miss-' + Date.now(),
+            date: dInput.value,
+            time: tInput.value,
+            text: textVal
+          };
+
+          missNotes.unshift(newNote);
+          currentMissIndex = 0;
+          writeStorage(STORAGE_KEYS.missNotes, missNotes);
+          renderMissJar('pull');
+
+          txtInput.value = '';
+          showToast('Записка добавлена в банку скучаний');
+        });
+
+        // Банка причин любви: достать причину / переключение / добавление
+        document.getElementById('pull-love-reason-btn').addEventListener('click', () => {
+          if (!loveReasons.length) {
+            showToast('Банка пока пуста');
+            return;
+          }
+          if (loveReasons.length > 1) {
+            let next = Math.floor(Math.random() * loveReasons.length);
+            if (next === currentLoveIndex) {
+              next = (currentLoveIndex + 1) % loveReasons.length;
+            }
+            currentLoveIndex = next;
+          }
+          renderLoveJar('pull');
+          spawnFloatingHearts(4);
+        });
+
+        document.getElementById('prev-love-reason-btn').addEventListener('click', () => {
+          if (!loveReasons.length) return;
+          currentLoveIndex = (currentLoveIndex - 1 + loveReasons.length) % loveReasons.length;
+          renderLoveJar('pull');
+        });
+
+        document.getElementById('next-love-reason-btn').addEventListener('click', () => {
+          if (!loveReasons.length) return;
+          currentLoveIndex = (currentLoveIndex + 1) % loveReasons.length;
+          renderLoveJar('pull');
+        });
+
+        document.getElementById('add-love-reason-form').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const input = document.getElementById('love-reason-input');
+          const val = input.value.trim();
+          if (!val) {
+            showToast('Напиши причину любви');
+            return;
+          }
+          loveReasons.push(val);
+          currentLoveIndex = loveReasons.length - 1;
+          writeStorage(STORAGE_KEYS.loveReasons, loveReasons);
+          renderLoveJar('pull');
+          input.value = '';
+          showToast('Новая причина добавлена в банку');
+        });
+
+        // Секретное письмо «Открыть, когда грустно или далеко»
+        const letterBtn = document.getElementById('toggle-letter-btn');
+        const letterBtnText = document.getElementById('letter-btn-text');
+        const letterBox = document.getElementById('secret-letter-content');
+
+        letterBtn.addEventListener('click', () => {
+          const isHidden = letterBox.classList.contains('hidden');
+          if (isHidden) {
+            letterBox.classList.remove('hidden');
+            letterBtn.setAttribute('aria-expanded', 'true');
+            letterBtnText.textContent = 'Свернуть письмо';
+            spawnFloatingHearts(5);
+          } else {
+            letterBox.classList.add('hidden');
+            letterBtn.setAttribute('aria-expanded', 'false');
+            letterBtnText.textContent = 'Открыть письмо';
+          }
+        });
+
+        // Кнопка фоновой мелодии
+        document.getElementById('ambient-toggle-btn').addEventListener('click', toggleAmbient);
+
+        // Пасхалка по 5 кликам на сердечко в подвале
+        const eggBtn = document.getElementById('easter-egg-heart-btn');
+        const eggHint = document.getElementById('easter-egg-hint');
+        const eggReveal = document.getElementById('easter-egg-reveal');
+
+        eggBtn.addEventListener('click', () => {
+          easterEggClicks += 1;
+          spawnFloatingHearts(2);
+
+          if (easterEggClicks < 5) {
+            const left = 5 - easterEggClicks;
+            eggHint.textContent = `ещё ${left} ${pluralize(left, 'нажатие', 'нажатия', 'нажатий')}...`;
+          } else {
+            eggReveal.classList.remove('hidden');
+            eggHint.textContent = 'секрет открыт!';
+            spawnFloatingHearts(10);
+            showToast('Ты нашла секретную записку в подвале ✨');
+          }
+        });
+      }
+
+      // Инициализация страницы при загрузке
+      function init() {
+        const savedStart = readStorage(STORAGE_KEYS.startDate, null);
+        if (savedStart) {
+          const parsed = new Date(savedStart);
+          if (!Number.isNaN(parsed.getTime())) {
+            startDateObj = parsed;
+          }
+        }
+
+        const savedMiss = readStorage(STORAGE_KEYS.missNotes, null);
+        missNotes = Array.isArray(savedMiss) && savedMiss.length ? savedMiss : [...DEFAULT_MISS_NOTES];
+
+        const savedLove = readStorage(STORAGE_KEYS.loveReasons, null);
+        loveReasons = Array.isArray(savedLove) && savedLove.length ? savedLove : [...DEFAULT_LOVE_REASONS];
+
+        const savedHugs = readStorage(STORAGE_KEYS.hugsCount, 0);
+        hugsCount = typeof savedHugs === 'number' && savedHugs >= 0 ? savedHugs : 0;
+
+        // Подставляем сегодняшнюю дату и текущее время по умолчанию в форму новой записки скучаний
+        const now = new Date();
+        const dInput = document.getElementById('miss-date-input');
+        const tInput = document.getElementById('miss-time-input');
+        if (dInput) {
+          dInput.value = `${now.getFullYear()}-${pad2(now.getMonth() + 1)}-${pad2(now.getDate())}`;
+        }
+        if (tInput) {
+          tInput.value = `${pad2(now.getHours())}:${pad2(now.getMinutes())}`;
+        }
+
+        bindEvents();
+        updateCounter();
+        renderMissJar('');
+        renderLoveJar('');
+        updateHugsUI();
+
+        setInterval(updateCounter, 1000);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
 </body>
 </html>
